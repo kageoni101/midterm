@@ -1,0 +1,147 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%; /* Ensure the body takes up the full height */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    background-color: #1b1b2f; /* Dark background color */
+    color: #e1e1f2; /* Light text color */
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #23233b; /* Darker background for header */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #7a5fdb; /* Primary accent color (purple) */
+}
+
+
+/* Navigation Links */
+nav a {
+    color: #e1e1f2; /* Light text color for links */
+    text-decoration: none; /* Remove underline */
+    padding: 0.5rem 1rem; /* Add some padding */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+nav a:hover {
+    background-color: #7a5fdb; /* Background color on hover */
+    color: #ffffff; /* Change text color on hover */
+    border-radius: 5px; /* Slight rounding of the corners */
+}
+
+
+/* About Section */
+main {
+    flex: 1; /* Allow the main content to grow and fill available space */
+}
+
+section {
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 1.5rem;
+    background-color: #23233b; /* Darker background for section */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+}
+
+section h2 {
+    color: #7a5fdb;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+section p {
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjusts to 3 columns */
+    gap: 20px; /* Use gap to create space between grid items */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Optional: Adds space inside the container */
+}
+
+.box {
+    height: 300px;
+    width: 100%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden; /* This will contain the zoomed image */
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.box:hover::before {
+    transform: scale(1.1); /* This creates the zoom effect */
+}
+
+.container:hover .box::before {
+    filter: grayscale(100%) opacity(0.24);
+}
+
+.container .box:hover::before {
+    filter: grayscale(0%) opacity(1);
+}
+
+.box::after {
+    content: attr(data-text);
+    position: absolute;
+    font-size: large;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7); /* semi-transparent background */
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    opacity: 0;
+    z-index: 1; /* Ensure the text is above the image */
+}
+
+.box:hover::after {
+    opacity: 1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #23233b;
+    color: #9d85e4;
+    font-size: 0.9rem;
+}
